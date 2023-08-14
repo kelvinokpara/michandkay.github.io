@@ -59,26 +59,95 @@ footer {
   right: 0;
   margin: 0 auto;
 }
-.berries-side {
+
+.scroll-arr-div {
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  bottom: 25px;
+  left: 0;
   right: 0;
+  z-index: 10;
+}
+.arr-down1 {
+  width: 20px;
+  top: 1.1%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+
+  height: fit-content;
+  position: absolute;
+  z-index: 9;
+}
+.arr-down2 {
+  width: 20px;
+  bottom: 25px;
+  /* top: -10px; */
+  left: 0;
+  right: 0;
+  margin: auto;
+  /* position: absolute; */
+  z-index: 10;
+}
+.arr-down1,
+.arr-down2 {
+  animation: arrowdown 0.5s linear 0.2s infinite;
+}
+
+.berries-side {
+  right: 0px;
   top: 0%;
 }
 .scroll2 {
   width: 80px;
+  bottom: 0px;
   left: 0;
   right: 0;
   margin: 0 auto;
+  position: absolute;
 }
 .strawberry-side {
   top: -5%;
-  right: 0;
+  right: 0px;
 }
 .yogurt-side {
   width: 100px;
   top: -4%;
   left: 0;
 }
+
+.scroll1,
+.berries-side,
+.scroll2,
+.strawberry-side {
+  animation: rotate 5s linear -0.2s infinite;
+}
+
 /* tiny absolute images */
+
+/* keyframes */
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes arrowdown {
+  0% {
+    transform: translateY(0px);
+  }
+  30% {
+    transform: translateY(7px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+/* keyframes */
 
 /* nav start */
 nav {
@@ -92,6 +161,7 @@ nav {
   z-index: 10;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.39);
   backdrop-filter: blur(2px);
+  background-color: rgba(245, 245, 245, 0.062);
 }
 
 #nav-logo {
@@ -155,8 +225,10 @@ nav ul {
 /* nav end */
 
 /* main secion start */
-main {
+main,
+section {
   position: relative;
+  overflow: hidden;
 }
 
 main,
@@ -256,7 +328,7 @@ body {
 
 section {
   position: relative;
-  margin-top: -70px;
+  margin-top: 70px;
 }
 
 #midsection-yoghourt-types {
@@ -327,8 +399,6 @@ section {
 }
 
 #midsection-features-collection {
-  /* display: grid;
-  grid-template-areas: "quality offer, delivery delivery"; */
   display: flex;
   flex-direction: column;
   gap: 30px;
@@ -481,7 +551,7 @@ section {
 }
 
 #midsection-testimonial {
-  margin: 10px 0 1 0px 0;
+  margin: 10px 0 10px 0;
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -516,6 +586,20 @@ section {
 #testimonial-person span {
   font-size: 11px;
   font-weight: 400;
+}
+
+.testimonial-left-right-icons {
+  color: white;
+  padding: 10px 12px;
+  border-radius: 50%;
+  margin: 0 10px 0 0;
+  background-color: #9f1696;
+  transition: all 0.4s;
+}
+.testimonial-left-right-icons:hover {
+  color: #9f1696;
+  background-color: transparent;
+  border: 1px solid #9f1696;
 }
 /* chooseus end */
 
@@ -604,6 +688,11 @@ footer ul {
 
 /* media query */
 @media screen and (min-width: 540px) {
+  nav {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
   main,
   #midsection-features,
   #midsection-chooseus,
@@ -617,6 +706,9 @@ footer ul {
   }
   h1 {
     font-size: 50px;
+  }
+  main {
+    height: 70vh;
   }
 
   #main-yoghourt-center {
@@ -637,6 +729,37 @@ footer ul {
   .absolute-img {
     width: 100px;
   }
+
+  .scroll-arr-div {
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    bottom: 10%;
+    left: 0;
+    right: 0;
+    z-index: 10;
+  }
+  .arr-down1 {
+    width: 30px;
+    top: 1.1%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+
+    height: fit-content;
+    position: absolute;
+    z-index: 9;
+  }
+  .arr-down2 {
+    width: 30px;
+    top: 50px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    position: absolute;
+    z-index: 10;
+  }
+
   .scroll1 {
     top: 20px;
     left: 0;
@@ -780,7 +903,7 @@ footer ul {
     margin: 0 auto;
   }
   .berries-side {
-    right: 0;
+    right: 25px;
     top: -2%;
   }
   .scroll2 {
@@ -789,7 +912,7 @@ footer ul {
   }
   .strawberry-side {
     top: -5%;
-    right: 0;
+    right: 25px;
   }
   .yogurt-side {
     width: 200px;
@@ -839,7 +962,12 @@ footer ul {
   main {
     display: flex;
     justify-content: space-between;
-    height: 120vh;
+    height: 100vh;
+  }
+
+  main,
+  section {
+    overflow: visible;
   }
 
   #main-text h1 {
@@ -862,7 +990,7 @@ footer ul {
 
   #main-yoghourt-center {
     background-image: url(./Assets/arrow-dotted.png);
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
     width: 600px;
     display: flex;
@@ -873,7 +1001,7 @@ footer ul {
     position: absolute;
     z-index: 5;
     top: 0px;
-    bottom: 250px;
+    bottom: 210px;
     right: 0;
     left: 20%;
     margin: 0 auto;
@@ -911,7 +1039,7 @@ footer ul {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 70px;
+    gap: 40px;
     background-color: #f3e3f2;
     position: absolute;
     top: -200px;
@@ -1093,3 +1221,39 @@ footer ul {
   /* bulk orders end */
 }
 /* media query2 */
+
+@media screen and (min-width: 1120px) {
+  #main-yoghourt-center {
+    background-size: 580px;
+    width: 650px;
+    z-index: 5;
+    bottom: 200px;
+    right: 0;
+    left: 20%;
+  }
+
+  #main-yoghourt-center::before {
+    width: 380px;
+  }
+
+  #main-yoghourt-center img {
+    width: 300px;
+    padding-left: 50px;
+  }
+
+  #main-yoghourt-features {
+    gap: 65px;
+    top: -200px;
+    padding: 190px 0px 700px 210px;
+  }
+
+  .scroll-arr-div {
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    bottom: 130px;
+    left: 0;
+    right: 0;
+    z-index: 10;
+  }
+}
